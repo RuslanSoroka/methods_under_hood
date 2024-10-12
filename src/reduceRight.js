@@ -1,29 +1,23 @@
 export const kindOfReduceRight = (arr, callback, initialValue) => {
-    try {
-        if (
-            arr.length === 0 ||
-            (initialValue === undefined && initialValue === null)
-        )
-            throw new TypeError("Array and Initial value are empty");
-        const lastIndex = arr.length - 1;
-        const lastElement = arr[lastIndex];
-        let accumulator;
+    let startIndex =
+        initialValue === null ||
+        undefined ||
+        initialValue.length === 0 ||
+        typeof initialValue === "number"
+            ? 0
+            : 1;
 
-        if (initialValue === undefined && initialValue === null) {
-            accumulator = lastElement;
-            for (let i = lastIndex - 1; i >= 0; i--) {
-                accumulator = callback(accumulator, arr[i], i, arr);
-            }
-        }
-        accumulator = initialValue;
-        for (let i = lastIndex; i >= 0; i--) {
-            accumulator = callback(accumulator, arr[i], i, arr);
-        }
+    const last_index = arr.length - 1;
+    const last_element = arr[last_index]
 
-        return accumulator;
-    } catch (err) {
-        const ERR = err;
+    let accum = startIndex ? last_element : initialValue;
+    
+    for (let i = last_index; i >= 0; i--) {
+
+        
+        accum = callback(accum, arr[i], i, arr);
     }
-};
 
+    return accum;
+};
 

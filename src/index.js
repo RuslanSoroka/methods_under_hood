@@ -38,29 +38,24 @@ import { kindOfSome } from "./some.js";
     let reducedValue = kindOfReduce(
         usersList,
         (accum, item, index, array) => {
-            if (Array.isArray(accum)) {
-                kindOfPush(accum, {
-                    userName: item.name,
-                    yearBirth: currentYear - item.age,
-                });
-            }
+            accum[item.name] = item.poneNumber;
 
             return accum;
         },
-        []
+        {}
     );
     console.log(reducedValue);
 
+
     let reducedRightValue = kindOfReduceRight(
         usersList,
-        (accum, item, index, array) => {
+        (accum, item, index, array) => {      
             if (Array.isArray(accum)) {
                 kindOfPush(accum, {
                     userName: item.name,
                     yearBirth: currentYear - item.age,
                 });
             }
-    
             return accum;
         },
         []
