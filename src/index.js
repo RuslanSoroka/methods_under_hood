@@ -1,14 +1,14 @@
-import { usersList, usersYearOfBirth } from "./data.js";
-import { kindOfPush } from "./push.js";
-import { kindOfForEach } from "./forEach.js";
-import { kindOfMap } from "./map.js";
-import { kindOfPop } from "./pop.js";
-import { kindOfUnshift } from "./unshift.js";
-import { kindOfShift } from "./shift.js";
-import { kindOfReduce } from "./reduce.js";
-import { kindOfReduceRight } from "./reduceRight.js";
-import { kindOfEvery } from "./every.js";
-import { kindOfSome } from "./some.js";
+import {usersList, usersYearOfBirth} from "./data.js";
+import {kindOfPush} from "./push.js";
+import {kindOfForEach} from "./forEach.js";
+import {kindOfMap} from "./map.js";
+import {kindOfPop} from "./pop.js";
+import {kindOfUnshift} from "./unshift.js";
+import {kindOfShift} from "./shift.js";
+import {kindOfReduce} from "./reduce.js";
+import {kindOfReduceRight} from "./reduceRight.js";
+import {kindOfEvery} from "./every.js";
+import {kindOfSome} from "./some.js";
 
 (function () {
     const DATE = new Date();
@@ -49,7 +49,7 @@ import { kindOfSome } from "./some.js";
 
     let reducedRightValue = kindOfReduceRight(
         usersList,
-        (accum, item, index, array) => {      
+        (accum, item, index, array) => {
             if (Array.isArray(accum)) {
                 kindOfPush(accum, {
                     userName: item.name,
@@ -63,12 +63,12 @@ import { kindOfSome } from "./some.js";
     console.log(reducedRightValue);
 
     const resultOfEvery = kindOfEvery(reducedRightValue, (item, index, array) => {
-        return item.yearBirth < 1930;
+        return item.yearBirth < 2020;
     });
     console.log(resultOfEvery);
 
     const resultOfSome = kindOfSome(reducedRightValue, (item, index, array) => {
-        const DUE_AGE = 1947
+        const DUE_AGE = 1940;
         return item.yearBirth === DUE_AGE;
     });
     console.log(resultOfSome);

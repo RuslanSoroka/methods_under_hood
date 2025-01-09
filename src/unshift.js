@@ -1,11 +1,8 @@
-import { kindOfPush } from "./push.js";
+import {kindOfPush} from "./push.js";
+
 export const kindOfUnshift = (arr, ...items) => {
-    let newArr = [...items];
-    for (let i = 0; i < arr.length; i++) {
-        const element = arr[i];
-        kindOfPush(newArr, element);
-    }
-    arr.length = 0;
-    kindOfPush(arr, ...newArr);
-    newArr = null;
+    arr.reverse().push(...items);
+    arr.reverse()
+
+    return arr.length;
 };

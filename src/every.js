@@ -1,14 +1,10 @@
 export const kindOfEvery = (arr, callback) => {
-    let isTrue;
-    let quantitiOfElements = 0;
+
     for (let i = 0; i < arr.length; i++) {
-        isTrue = callback(arr[i], i, arr);
-
-        quantitiOfElements++;
-
-        if (!isTrue) break;
+        if (!callback(arr[i], i, arr)) return false
     }
-    return quantitiOfElements === arr.length ? true : false;
+
+    return true;
 };
 
 
